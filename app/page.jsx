@@ -3,6 +3,8 @@
 import Dropdown from "@/components/Dropdown";
 import { useState, useEffect, useRef } from "react";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function Home() {
     const [loading, setLoading] = useState(false);
     const [agentState, setAgentState] = useState({});
@@ -36,7 +38,7 @@ export default function Home() {
 
         try {
             setLoading(true);
-            const response = await fetch("http://127.0.0.1:8000/agent/", {
+            const response = await fetch(backendUrl + "/agent/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
